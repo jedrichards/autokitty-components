@@ -1,0 +1,23 @@
+{
+  "stage": 0,
+  "optional": [
+    "es7.decorators"
+  ],
+  "plugins": [
+    "react-transform"
+  ],
+  "extra": {
+    "react-transform": {
+      "transforms": [
+        {
+          "transform": "livereactload/babel-transform",
+          "imports": ["react"]
+        },
+        {
+          "transform": "react-transform-catch-errors",
+          "imports": ["react", "redbox-react"]
+        }
+      ]
+    }
+  }
+}
