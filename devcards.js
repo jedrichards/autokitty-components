@@ -1,9 +1,11 @@
+import {pretty} from 'js-object-pretty-print'
+import dedent from 'dedent'
+import Markdown from 'react-remarkable'
 import radium from 'radium'
 import React, {Component} from 'react'
-import Markdown from 'react-remarkable'
-import {pretty} from 'js-object-pretty-print'
 
-@radium class DevCardsChrome extends Component {
+@radium
+class DevCardsChrome extends Component {
   render () {
     const styles = {
       header: {
@@ -34,10 +36,10 @@ import {pretty} from 'js-object-pretty-print'
   }
 }
 
-@radium class DevCard extends Component {
+@radium
+class DevCard extends Component {
   render () {
-    const {documentation, MainObject, props, name} = this.props
-    const propsString = Object.keys(props).length > 0 ? pretty(props, 2, 'PRINT', false) : '{}'
+    const {docs, target: Target, props, name} = this.props
     const styles = {
       base: {
         border: '1px solid #ccc',
@@ -50,12 +52,12 @@ import {pretty} from 'js-object-pretty-print'
         padding: '8px 20px',
         color: '#888'
       },
-      documentation: {
+      docs: {
         padding: 20,
-        borderBottom: '1px solid #ccc',
       },
-      mainObject: {
-        padding: 20
+      target: {
+        padding: 20,
+        borderTop: '1px solid #ccc'
       },
       props: {
         marginBottom: 0,
@@ -65,16 +67,45 @@ import {pretty} from 'js-object-pretty-print'
         borderTop: '1px solid #ccc'
       }
     }
+
+    const renderDocs = () => {
+      if (docs) {
+        return (
+          <div className="markdown-body" style={styles.docs}>
+            <Markdown source={docs}/>
+          </div>
+        )
+      }
+    }
+
+    const renderProps = () => {
+      if (props && Object.keys(props).length > 0) {
+        return <pre style={styles.props}>{pretty(props, 2, 'PRINT', false)}</pre>
+      }
+    }
+
+    const renderTarget = () => {
+      if (typeof Target === 'function') {
+        return (
+          <div style={styles.target}>
+            <Target {...props}/>
+          </div>
+        )
+      } else if (typeof Target === 'object'){
+        return (
+          <div style={styles.target}>
+            {Target}
+          </div>
+        )
+      }
+    }
+
     return (
       <div style={styles.base}>
         <p style={styles.name}>{name}</p>
-        <div className="markdown-body" style={styles.documentation}>
-          <Markdown source={documentation}/>
-        </div>
-        <div style={styles.mainObject}>
-          <MainObject {...props}/>
-        </div>
-        <pre style={styles.props}>{propsString}</pre>
+        {renderDocs()}
+        {renderTarget()}
+        {renderProps()}
       </div>
     )
   }
@@ -82,25 +113,24 @@ import {pretty} from 'js-object-pretty-print'
 
 const cards = new Map()
 
-export const defcard = (name, documentation, MainObject, props = {}) => {
-  cards.set(name, {name, documentation, MainObject, props})
-  return MainObject
-}
-
-export const devcards = () => (
+const renderCards = () => (
   <DevCardsChrome>
-    {[...cards.values()].map((card, index) => {
-      return (
-        <div key={index}>
-          <DevCard {...card}/>
-        </div>
-      )
-    })}
+    {[...cards.values()].map((card, index) => <DevCard key={index} {...card}/>)}
   </DevCardsChrome>
 )
 
-export const renderToEl = (el) => React.render(devcards(), document.getElementById(el))
+export const card = ({
+  name = `Card ${cards.size + 1}`,
+  docs = '',
+  target,
+  props
+}) => {
+  docs = dedent(docs)
+  cards.set(name, {name, docs, target, props})
+}
 
-export const renderToString = () => React.renderToString(devcards())
+export const renderToEl = (id) => React.render(renderCards(), document.getElementById(id))
+
+export const renderToString = () => React.renderToString(renderCards())
 
 export const reset = () => cards.clear()

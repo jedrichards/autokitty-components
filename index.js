@@ -1,53 +1,65 @@
-import React, {Component, PropTypes} from 'react'
-import {defcard, renderToEl, reset} from './devcards'
+import React, {Component} from 'react'
+import {card, renderToEl, reset} from './devcards'
 import radium from 'radium'
+
+import {HelloWorld} from './components'
 
 module.onReload && module.onReload(reset);
 
-export const HelloWorld = defcard(
-  'HelloWorld',
-  `### Hello world component
+card({
+  target: HelloWorld
+})
 
-  1. Good
-  1. Bad
+card({
+  docs: 'This is a card without a name',
+  target: HelloWorld
+})
 
-  > An aside`,
-  @radium class HelloWorld extends Component {
-    static propTypes = {
-      foo: PropTypes.string
-    }
-    render () {
-      return (
-        <p
-          style={{color: 'red', ':hover': {color: 'green'}}}>
-          HelloWorld {this.props.foo} how quick is this?
-          Answer: not quick enough
-        </p>
-      )
-    }
-  },
-  {
-    foo: 'yo!',
-    bar: 'Baz',
-    qux: {
-      '1': '1',
-      '2': 2
-    },
-    onClick: () => {}
-  }
-)
+card({
+  name: 'HelloWorld',
+  docs: 'This card is named',
+  target: HelloWorld
+})
 
-export const HelloWorld2 = defcard(
-  'HelloWorld2',
-  `This is just a paragraph`,
-  class HelloWorld2 extends Component {
-    render () {
-      return <p>Hot reload? Yeap. HelloWorld2</p>
-    }
-  },
-  {
-    foo: 2
-  }
-)
+card({
+  name: 'HelloWorld with props',
+  docs: 'This card is has been passed props',
+  target: HelloWorld,
+  props: {foo: 'bar'}
+})
+
+card({
+  docs: `
+    ### Documentation
+
+    Cards can render markdown documentation
+
+    \`\`\`
+    code examples work
+    \`\`\`
+  `,
+  target: HelloWorld
+})
+
+card({
+  name: 'Doc only card',
+  docs: '> Only docs here, friend'
+})
+
+card({
+  docs: `
+    ### ReactElement Cards
+
+    Cards can be passed arbitrary ReactElement trees to render not just component classes.
+
+    In this way components can be demonstrated while composed together.
+  `,
+  target: (
+    <div>
+      <HelloWorld/>
+      <HelloWorld/>
+    </div>
+  )
+})
 
 if (typeof window !== 'undefined') renderToEl('devcards')
