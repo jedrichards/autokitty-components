@@ -1,10 +1,6 @@
+import {card, renderCardsToEl, reset} from './lib/devcards'
+import {HelloWorld, StatefulHelloWorld} from './components'
 import React, {Component} from 'react'
-import {card, renderToEl, reset} from './devcards'
-import radium from 'radium'
-
-import {HelloWorld} from './components'
-
-module.onReload && module.onReload(reset);
 
 card({
   target: HelloWorld
@@ -22,10 +18,16 @@ card({
 })
 
 card({
+  name: 'StatefulHelloWorld',
+  docs: 'This card demonstrates a component with internal state',
+  target: StatefulHelloWorld
+})
+
+card({
   name: 'HelloWorld with props',
   docs: 'This card is has been passed props',
   target: HelloWorld,
-  props: {foo: 'bar'}
+  targetProps: {foo: 'bar'}
 })
 
 card({
@@ -35,7 +37,7 @@ card({
     Cards can render markdown documentation
 
     \`\`\`
-    code examples work
+    code.examples.work() === true
     \`\`\`
   `,
   target: HelloWorld
@@ -62,4 +64,7 @@ card({
   )
 })
 
-if (typeof window !== 'undefined') renderToEl('devcards')
+if (typeof window !== 'undefined') {
+  renderCardsToEl('devcards')
+  reset()
+}

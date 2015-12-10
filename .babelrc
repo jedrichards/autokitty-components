@@ -1,23 +1,21 @@
 {
-  "stage": 0,
-  "optional": [
-    "es7.decorators"
-  ],
+  "presets": ["es2015", "react"],
   "plugins": [
-    "react-transform"
-  ],
-  "extra": {
-    "react-transform": {
-      "transforms": [
-        {
-          "transform": "livereactload/babel-transform",
-          "imports": ["react"]
-        },
-        {
-          "transform": "react-transform-catch-errors",
-          "imports": ["react", "redbox-react"]
-        }
-      ]
-    }
-  }
+    "transform-decorators-legacy",
+    [
+      "react-transform",
+      {
+        "transforms": [
+          {
+            "transform": "livereactload/babel-transform",
+            "imports": ["react"]
+          },
+          {
+            "transform": "react-transform-catch-errors",
+            "imports": ["react", "redbox-react"]
+          }
+        ]
+      }
+    ]
+  ]
 }

@@ -22,16 +22,8 @@ Features:
 - Devcards can render either React Component classes or arbitrary trees of composed ReactElements
 
 Stack:
-- Babel
+- Babel 6
 - Browserify
 - LiveReactLoad
-- React
+- React 14
 - Radium
-
-Future features:
-- Visualse callbacks being invoked, e.g. onClick
-- Render more target types? What makes sense?
-- Visualise component state?
-- Visualise state external to a devcard? i.e. pass a state atom
-- Define tests, and visualise results in devcards? What sort of tests?
-- Can we make the devcards lib more lib-like and hot-reloading implementation agnostic?
