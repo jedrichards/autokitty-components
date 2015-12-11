@@ -11,10 +11,11 @@
     "bundle": "watchify --delay 100 -v -t babelify -p livereactload -o bundle.js index.js",
     "test": "echo \"Tests passed\""
   },
-  "engines" : {
-    "node" : "5.1.1"
+  "engines": {
+    "node": "5.1.1"
   },
   "dependencies": {
+    "babel-cli": "^6.3.17",
     "babel-plugin-react-transform": "^2.0.0-beta1",
     "babel-plugin-transform-decorators-legacy": "^1.2.0",
     "babel-preset-es2015": "^6.3.13",
