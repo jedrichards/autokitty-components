@@ -2,6 +2,8 @@
 
 # TODO: Bump package version and publish
 
+set -e
+
 mkdir -p tmp/static
 
 cp node_modules/normalize.css/normalize.css tmp/static/normalize.css
