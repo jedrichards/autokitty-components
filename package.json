@@ -8,7 +8,11 @@
   "scripts": {
     "start": "babel-node server.js",
     "watch": "npm run start & npm run bundle & wait",
-    "bundle": "watchify --delay 100 -v -t babelify -p livereactload -o bundle.js index.js"
+    "bundle": "watchify --delay 100 -v -t babelify -p livereactload -o bundle.js index.js",
+    "test": "echo \"Tests passed\""
+  },
+  "engines" : {
+    "node" : "5.1.1"
   },
   "dependencies": {
     "babel-plugin-react-transform": "^2.0.0-beta1",

@@ -1,12 +1,10 @@
-import './index'
-import html from './html'
-import {renderCardsToString} from './lib/devcards'
 import express from 'express'
 import React from 'react'
+import view from './view'
 
 const server = express()
 
-server.get("/", (req, res) => res.send(html(renderCardsToString())))
+server.get("/", (req, res) => res.send(view()))
 
 const send = (file) =>
   (req, res) => res.sendFile(file, {root: __dirname})

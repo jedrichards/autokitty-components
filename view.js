@@ -1,4 +1,7 @@
-export default (devcards) =>
+import './index'
+import {renderCardsToString} from './lib/devcards'
+
+export default () =>
   `<!DOCTYPE html>
   <html>
     <head>
@@ -19,7 +22,7 @@ export default (devcards) =>
       </style>
     </head>
     <body>
-      <div id="devcards">${devcards}</div>
+      <div id="devcards">${renderCardsToString()}</div>
       <script type="text/javascript" src="/static/bundle.js"></script>
     </body>
   </html>`
