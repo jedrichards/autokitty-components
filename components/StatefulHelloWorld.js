@@ -9,7 +9,13 @@ export default class StatefulHelloWorld extends Component {
 
   componentDidMount () {
     const tick = () => this.setState({count: this.state.count + 1})
-    setInterval(tick, 1000)
+    this.setState({
+      intervalId: setInterval(tick, 1000)
+    })
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.state.intervalId)
   }
 
   render () {

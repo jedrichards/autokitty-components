@@ -24,6 +24,7 @@ Features:
 Stack:
 - Babel 6
 - Browserify
+- Nightwatch tests running on Browserstack
 - LiveReactLoad
 - React 14
 - Radium
