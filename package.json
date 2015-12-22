@@ -28,16 +28,16 @@
     "github-markdown-css": "^2.1.1",
     "js-object-pretty-print": "^0.2.0",
     "livereactload": "^2.1.0",
-    "nodemon": "1.7.0",
+    "nodemon": "1.8.1",
     "normalize.css": "^3.0.3",
     "radium": "^0.15.3",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "react-proxy": "1.1.0",
+    "react-proxy": "2.0.0",
     "react-remarkable": "^1.1.1",
     "react-transform-catch-errors": "^1.0.0",
     "redbox-react": "^1.2.0",
     "suitcss-base": "^1.0.1",
-    "watchify": "3.4.0"
+    "watchify": "3.6.1"
   }
 }
