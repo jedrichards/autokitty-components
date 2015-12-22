@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO: Bump package version and publish
+# TODO: Bump package version and publish to npm
 
 set -e
 
