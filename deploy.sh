@@ -14,4 +14,4 @@ node_modules/.bin/browserify -t babelify -o tmp/static/bundle.js index.js
 node_modules/.bin/babel-node output-view.js > tmp/index.html
 
 cd tmp
-surge --project ./ --domain autokitty-devcards.surge.sh
+surge --project ./ --domain autokitty-components.surge.sh

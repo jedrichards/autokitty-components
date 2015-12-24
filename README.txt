@@ -1,4 +1,4 @@
-AutoKitty DevCards
+AutoKitty Components
 ==================
 
 An attempt to recreate some of the value of bhauman/devcards using JavaScript, React and hot reloading.
@@ -15,7 +15,7 @@ Quick start:
 - Edit the cards in index.js
 
 Features:
-- Live edit the devcards and components
+- Live edit the devcards/components
 - Define devcards with an optional name and documentation
 - Visualise props passed to components
 - Devcards can be rendered to a string for server side rendering
