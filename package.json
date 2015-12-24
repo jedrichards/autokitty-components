@@ -1,10 +1,14 @@
 {
-  "name": "autokitty-devcards",
+  "name": "autokitty-components",
   "version": "0.0.1",
-  "description": "AutoKitty DevCards",
-  "main": "index.js",
+  "description": "AutoKitty Components",
+  "main": "components/index.js",
   "author": "Jed Richards",
   "license": "WTFPL",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/jedrichards/autokitty-components.git"
+  },
   "scripts": {
     "start": "PORT=3000 babel-node start-server.js",
     "watch": "npm run start & npm run watchify & wait",
@@ -14,7 +18,14 @@
   "engines": {
     "node": "5.1.1"
   },
+  "files": [
+    "components"
+  ],
   "dependencies": {
+    "radium": "^0.15.3",
+    "react": "^0.14.3"
+  },
+  "devDependencies": {
     "babel-cli": "^6.3.17",
     "babel-plugin-react-transform": "^2.0.0-beta1",
     "babel-plugin-transform-decorators-legacy": "^1.2.0",
@@ -24,20 +35,18 @@
     "browserify": "^12.0.1",
     "browserstacktunnel-wrapper": "^1.4.2",
     "dedent": "^0.6.0",
-    "express": "4.13.3",
+    "express": "^4.13.3",
     "github-markdown-css": "^2.1.1",
     "js-object-pretty-print": "^0.2.0",
     "livereactload": "^2.1.0",
-    "nodemon": "1.7.0",
+    "nodemon": "^1.7.0",
     "normalize.css": "^3.0.3",
-    "radium": "^0.15.3",
-    "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "react-proxy": "1.1.0",
+    "react-proxy": "^1.1.1",
     "react-remarkable": "^1.1.1",
     "react-transform-catch-errors": "^1.0.0",
     "redbox-react": "^1.2.0",
     "suitcss-base": "^1.0.1",
-    "watchify": "3.4.0"
+    "watchify": "^3.4.0"
   }
 }
