@@ -13,7 +13,8 @@
     "start": "PORT=3000 babel-node start-server.js",
     "watch": "npm run start & npm run watchify & wait",
     "watchify": "watchify --delay 100 -v -t babelify -p livereactload -o bundle.js index.js",
-    "test": "babel-node test.js"
+    "browserify": "browserify -t babelify -o bundle.js index.js",
+    "test": "npm run browserify && babel-node test.js"
   },
   "engines": {
     "node": "5.1.1"
