@@ -6,6 +6,7 @@ set -e
 
 echo 'Bumping version ...'
 
+git remote set-url origin git@github.com:jedrichards/autokitty-components.git
 git config --global user.email "machine@seisaku.co.uk"
 git config --global user.name "seisaku-machine"
 git fetch --unshallow origin || true
