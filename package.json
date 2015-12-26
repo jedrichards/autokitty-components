@@ -6,8 +6,8 @@
   "author": "Jed Richards",
   "license": "WTFPL",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/jedrichards/autokitty-components.git"
+    "type": "git",
+    "url": "https://github.com/jedrichards/autokitty-components.git"
   },
   "scripts": {
     "start": "PORT=3000 babel-node start-server.js",
@@ -26,6 +26,7 @@
     "react": "^0.14.3"
   },
   "devDependencies": {
+    "semver": "^5.1.0",
     "babel-cli": "^6.3.17",
     "babel-plugin-react-transform": "^2.0.0-beta1",
     "babel-plugin-transform-decorators-legacy": "^1.2.0",

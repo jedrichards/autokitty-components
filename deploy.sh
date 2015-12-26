@@ -1,8 +1,31 @@
 #!/usr/bin/env bash
 
-# TODO: Bump package version and publish to npm
-
 set -e
+
+# Bump
+
+echo 'Bumping version ...'
+
+git config --global user.email "contact@codeship.com"
+git config --global user.name "Codeship"
+git fetch --unshallow origin || true
+git fetch origin master:master
+git checkout master
+npm version patch -m "Release %s --skip-ci"
+git push origin master --tags
+
+# Publish
+
+should_publish=$(node_modules/.bin/babel-node should-publish.js)
+if [ $should_publish == 'true' ]; then
+  echo 'Publishing to NPM ...'
+  echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
+  npm publish
+fi
+
+# Deploy
+
+echo 'Deploying to Surge ...'
 
 mkdir -p tmp/static
 
