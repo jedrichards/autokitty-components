@@ -6,8 +6,8 @@ set -e
 
 echo 'Bumping version ...'
 
-git config --global user.email "contact@codeship.com"
-git config --global user.name "Codeship"
+git config --global user.email "machine@seisaku.co.uk"
+git config --global user.name "seisaku-machine"
 git fetch --unshallow origin || true
 git fetch origin master:master
 git checkout master
@@ -16,8 +16,8 @@ git push origin master --tags
 
 # Publish
 
-should_publish=$(node_modules/.bin/babel-node should-publish.js)
-if [ $should_publish == 'true' ]; then
+SHOULD_PUBLISH=$(node_modules/.bin/babel-node should-publish.js)
+if [ $SHOULD_PUBLISH == 'true' ]; then
   echo 'Publishing to NPM ...'
   echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
   npm publish
@@ -33,7 +33,8 @@ cp node_modules/normalize.css/normalize.css tmp/static/normalize.css
 cp node_modules/suitcss-base/lib/base.css tmp/static/suitcss-base.css
 cp node_modules/github-markdown-css/github-markdown.css tmp/static/github-markdown.css
 
-node_modules/.bin/browserify -t babelify -o tmp/static/bundle.js index.js
+npm run browserify
+cp bundle.js tmp/static/bundle.js
 node_modules/.bin/babel-node output-view.js > tmp/index.html
 
 cd tmp

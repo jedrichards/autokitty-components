@@ -3,6 +3,7 @@ import {start} from './server'
 import Tunnel from 'browserstacktunnel-wrapper'
 
 const tunnel = new Tunnel({key: process.env.BROWSERSTACK_KEY})
+const port = 3001
 
 const test = () => {
   const nw = spawn('nightwatch')
@@ -21,8 +22,8 @@ const onTunnelReady = (err) => {
 }
 
 const onServerReady = () => {
-  console.log('Server started on 3000')
+  console.log(`Test server started on ${port}`)
   tunnel.start(onTunnelReady)
 }
 
-start(3000, onServerReady)
+start(port, onServerReady)
